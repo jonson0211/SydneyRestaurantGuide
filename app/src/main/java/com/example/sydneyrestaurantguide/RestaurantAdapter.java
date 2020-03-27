@@ -48,8 +48,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     }
 
     public static class RestaurantViewHolder extends RecyclerView.ViewHolder  {
-        public TextView name, rating, rank, location;
+        public TextView name, rating, rank, location, pricePoint;
         public ImageView iconImage;
+
 
         public RestaurantViewHolder(View v) {
             super(v);
@@ -58,6 +59,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             rank = v.findViewById(R.id.rank);
             location = v.findViewById(R.id.location);
             iconImage = v.findViewById(R.id.iconImage);
+            pricePoint = v.findViewById(R.id.pricePoint);
         }
     }
 
@@ -72,15 +74,31 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
 
         Restaurant restaurant = mRestaurants.get(position);
-        holder.name.setText(restaurant.getName());
+        if(!restaurant.getName().equals("Sydney's Wings and Things") && !restaurant.getName().equals("Jenny's Asian Kitchen")){
+            holder.name.setText(restaurant.getName());
+        } else if(restaurant.getName().equals("Sydney's Wings and Things")){
+            holder.name.setText("Wings and Things");
+        } else if(restaurant.getName().equals("Jenny's Asian Kitchen")){
+            holder.name.setText("Jenny's Kitchen");
+        }
+
         holder.rating.setText(restaurant.getRating());
-        holder.rank.setText("#"+ restaurant.getRank());
-        holder.location.setText(restaurant.getLocation());
+        holder.rank.setText(restaurant.getRank() + ".");
+        holder.location.setText(restaurant.getSuburb());
         holder.iconImage.setImageResource(holder.itemView.getResources().getIdentifier("logo"+restaurant.getRank(), "drawable", "com.example.sydneyrestaurantguide"));
 
         holder.itemView.setTag(restaurant);
         holder.itemView.setOnClickListener(mOnClickListener);
 
+        if(restaurant.getPrice() <= 15) {
+            holder.pricePoint.setText("$");
+        } else if (restaurant.getPrice() <= 25 && restaurant.getPrice() > 15){
+            holder.pricePoint.setText("$$");
+        } else if (restaurant.getPrice() < 45 && restaurant.getPrice() > 25){
+            holder.pricePoint.setText("$$$");
+        } else if (restaurant.getPrice() >= 45){
+            holder.pricePoint.setText("$$$$");
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -38,63 +38,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:titleTextColor="#FFFFFF"></androidx.appcompat.widget.Toolbar>
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
+
+
         android:layout_height="match_parent"
-
-
+        android:layout_marginBottom="50dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
             tools:context=".DetailFragment">
-
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapView"
-                android:layout_width="244dp"
-                android:layout_height="223dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toEndOf="@+id/logo"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="111dp"
-                android:layout_height="94dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="64dp"
-                android:src="@drawable/ic_launcher_background"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/cuisine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="104dp"
+                android:layout_marginTop="32dp"
                 android:text="Cuisine:"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rating" />
+                app:layout_constraintStart_toStartOf="@+id/ratingText"
+                app:layout_constraintTop_toBottomOf="@+id/ratingText" />
 
             <TextView
                 android:id="@+id/cuisineField"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
                 android:layout_marginEnd="24dp"
                 android:text="TextView"
                 android:textSize="16sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/cuisine"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/cuisine" />
+                app:layout_constraintStart_toStartOf="@+id/rating" />
 
             <TextView
                 android:id="@+id/reviewField"
@@ -104,6 +86,7 @@
                 android:textSize="16sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/review"
                 app:layout_constraintEnd_toEndOf="@+id/topOrderField"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/topOrderField" />
 
             <TextView
@@ -157,62 +140,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/topOrderField" />
 
             <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="TextView"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
                 android:id="@+id/rating"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginEnd="24dp"
                 android:text="TextView"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/mapView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="10"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/rating"
-                app:layout_constraintHorizontal_bias="0.507"
-                app:layout_constraintStart_toStartOf="@+id/rating"
-                app:layout_constraintTop_toBottomOf="@+id/rating" />
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/ratingText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ratingText" />
 
             <TextView
                 android:id="@+id/ratingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="32dp"
                 android:text="Rating:"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/logo"
-                app:layout_constraintStart_toStartOf="@+id/logo"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="29dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="156dp"
-                android:text="____"
-                app:layout_constraintEnd_toEndOf="@+id/rating"
-                app:layout_constraintHorizontal_bias="0.507"
-                app:layout_constraintStart_toStartOf="@+id/rating"
-                app:layout_constraintTop_toTopOf="@+id/logo" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/restaurantPic" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -257,6 +205,80 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="@+id/review" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/ratingText"
+                app:layout_constraintTop_toTopOf="@+id/ratingText"
+                app:srcCompat="@drawable/rating" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Location:"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/review"
+                app:layout_constraintTop_toBottomOf="@+id/reviewField" />
+
+            <Button
+                android:id="@+id/seeMenu"
+                android:layout_width="230dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rectangle"
+                android:text="see menu on zomato"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="@color/colorAccent"
+                android:textColorLink="#F44336"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressField" />
+
+            <ImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="@+id/textView"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/locationicon" />
+
+            <ImageView
+                android:id="@+id/restaurantPic"
+                android:layout_width="324dp"
+                android:layout_height="193dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/addressField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="@+id/reviewField"
+                app:layout_constraintStart_toStartOf="@+id/reviewField" />
+
+            <Button
+                android:id="@+id/photoGallery"
+                android:layout_width="230dp"
+                android:layout_height="60dp"
+                android:background="@drawable/rectangle"
+                android:text="more photos on zomato"
+                android:textColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="@+id/seeMenu"
+                app:layout_constraintStart_toStartOf="@+id/seeMenu"
+                app:layout_constraintTop_toBottomOf="@+id/seeMenu" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
