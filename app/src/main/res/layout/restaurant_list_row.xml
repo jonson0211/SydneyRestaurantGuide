@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/rank"
@@ -25,8 +25,8 @@
 
         <ImageView
             android:id="@+id/iconImage"
-            android:layout_width="61dp"
-            android:layout_height="89dp"
+            android:layout_width="64dp"
+            android:layout_height="117dp"
             android:layout_marginStart="48dp"
             android:scaleType="fitCenter"
             android:src="@mipmap/ic_launcher"
@@ -35,36 +35,35 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/location"
-            android:layout_width="122dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/name" />
-
-        <TextView
             android:id="@+id/name"
             android:layout_width="176dp"
             android:layout_height="29dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/rating"
-            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintStart_toEndOf="@+id/iconImage"
             app:layout_constraintTop_toTopOf="@+id/iconImage" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="173dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="52dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/name" />
 
         <ImageView
             android:id="@+id/locationImage"
             android:layout_width="28dp"
             android:layout_height="31dp"
-            android:layout_marginTop="44dp"
             app:layout_constraintEnd_toStartOf="@+id/location"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/name"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/location"
             app:srcCompat="@drawable/locationicon" />
 
         <ImageView
@@ -75,7 +74,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.205"
+            app:layout_constraintVertical_bias="0.282"
             app:srcCompat="@drawable/circle" />
 
         <TextView
@@ -88,7 +87,8 @@
             android:textSize="21sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView8" />
+            app:layout_constraintTop_toTopOf="@+id/imageView8"
+            app:layout_constraintVertical_bias="0.454" />
 
         <TextView
             android:id="@+id/pricePoint"
@@ -98,8 +98,30 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/imageView8"
+            app:layout_constraintHorizontal_bias="0.46"
             app:layout_constraintStart_toStartOf="@+id/imageView8"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView8"
+            app:layout_constraintVertical_bias="0.448" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/locationImage"
+            app:layout_constraintStart_toStartOf="@+id/locationImage"
+            app:layout_constraintTop_toBottomOf="@+id/locationImage"
+            app:srcCompat="@drawable/food" />
+
+        <TextView
+            android:id="@+id/cuisineField"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/location"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/location"
+            app:layout_constraintTop_toBottomOf="@+id/location" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

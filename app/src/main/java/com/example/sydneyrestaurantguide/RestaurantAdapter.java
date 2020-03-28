@@ -48,7 +48,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     }
 
     public static class RestaurantViewHolder extends RecyclerView.ViewHolder  {
-        public TextView name, rating, rank, location, pricePoint;
+        public TextView name, rating, rank, location, pricePoint, cuisine;
         public ImageView iconImage;
 
 
@@ -60,6 +60,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             location = v.findViewById(R.id.location);
             iconImage = v.findViewById(R.id.iconImage);
             pricePoint = v.findViewById(R.id.pricePoint);
+            cuisine = v.findViewById(R.id.cuisineField);
         }
     }
 
@@ -83,6 +84,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         }
 
         holder.rating.setText(restaurant.getRating());
+        holder.cuisine.setText(restaurant.getCuisine());
         holder.rank.setText(restaurant.getRank() + ".");
         holder.location.setText(restaurant.getSuburb());
         holder.iconImage.setImageResource(holder.itemView.getResources().getIdentifier("logo"+restaurant.getRank(), "drawable", "com.example.sydneyrestaurantguide"));
