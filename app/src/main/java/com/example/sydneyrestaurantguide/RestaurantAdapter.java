@@ -9,11 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+ import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.NumberFormat;
-import java.util.ArrayList;
+ import java.util.ArrayList;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>{
 
@@ -21,7 +19,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     private ArrayList<Restaurant> mRestaurants;
     private boolean mTwoPane;
 
-
+    //setting onClickListeners on the restaurant_list_row view to lead to DetailActivity class when clicked. String value of restaurant rank is used to identify each restaurant object
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -64,17 +62,20 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         }
     }
 
+    //Inflating layout with restaurant rows
     @Override
     public RestaurantAdapter.RestaurantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_list_row, parent, false);
         return new RestaurantViewHolder(v);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // Replace contents of restaurant_list_row.xml
     @Override
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
 
         Restaurant restaurant = mRestaurants.get(position);
+
+        //This is to display shortened versions of 2 restaurant names, which initially didn't fit well in the recyclerview layout
         if(!restaurant.getName().equals("Sydney's Wings and Things") && !restaurant.getName().equals("Jenny's Asian Kitchen")){
             holder.name.setText(restaurant.getName());
         } else if(restaurant.getName().equals("Sydney's Wings and Things")){
@@ -92,6 +93,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         holder.itemView.setTag(restaurant);
         holder.itemView.setOnClickListener(mOnClickListener);
 
+        //To present restaurant price points in a simplistic way in the recyclerview, using dollar signs
         if(restaurant.getPrice() <= 15) {
             holder.pricePoint.setText("$");
         } else if (restaurant.getPrice() <= 25 && restaurant.getPrice() > 15){
@@ -103,7 +105,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         }
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    //Return size of dataset
     @Override
     public int getItemCount() {
         return mRestaurants.size();

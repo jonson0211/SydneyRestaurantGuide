@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //collapsingToolbarLayout is used to replace the default toolbar, for aesthetic purposes
         collapsingToolbarLayout = findViewById(R.id.collapseLayout);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         if (findViewById(R.id.detail_container) != null) {
             mTwoPane = true;
         }
+
 
         RecyclerView mRecyclerView = findViewById(R.id.rvList);
         mRecyclerView.setHasFixedSize(true);

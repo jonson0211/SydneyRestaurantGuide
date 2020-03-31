@@ -40,6 +40,7 @@ public class DetailFragment extends Fragment {
         }
     }
 
+    //Setting layout of view
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,10 +61,14 @@ public class DetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.topOrderField)).setText(mRestaurant.getTopOrder());
             ((TextView) rootView.findViewById(R.id.addressField)).setText(mRestaurant.getLocation());
             ((TextView) rootView.findViewById(R.id.reviewField)).setText(mRestaurant.getReview());
+
+            //Restaurant food images labelled as pic1, pic2.....pic10 in the drawable folder, and setImageResource() method is called to display the relevant picture below the toolbar, based on the restaurant's rank
             ((ImageView) rootView.findViewById(R.id.restaurantPic)).setImageResource(rootView.getResources().getIdentifier("pic" + mRestaurant.getRank(), "drawable", "com.example.sydneyrestaurantguide"));
+
+            //Similar to above, except with the restaurant banner which displays on the tool bar
             ((ImageView) rootView.findViewById(R.id.restaurantBanner)).setImageResource(rootView.getResources().getIdentifier("banner" + mRestaurant.getRank(), "drawable", "com.example.sydneyrestaurantguide"));
 
-            //get menu
+            //Setting an onClickListener on the seeMenu button to call the searchMenu method when clicked
             ((Button) rootView.findViewById(R.id.seeMenu)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,10 +76,11 @@ public class DetailFragment extends Fragment {
                 }
             });
 
+            //Setting an onClickListener on the photoGallery button to call the searchMenu method when clicked
             ((Button) rootView.findViewById(R.id.photoGallery)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    searchMenu(mRestaurant.getName());
+                    searchGallery(mRestaurant.getName());
                 }
             });
 
@@ -83,12 +89,15 @@ public class DetailFragment extends Fragment {
         return rootView;
     }
 
+    //The purpose of this method is to take the user to the restaurant's menu on Zomato. I noticed a pattern in the URL's for restaurant menus on Zomato and made sure the right strings could be parsed into the Uri.parse method.
     private void searchMenu(String name) {
         String restaurantURL = ((mRestaurant.getName()).replace(" ", "-").replace("'","") + "-" +  mRestaurant.getSuburb().replace(" ","-") + "/menu");
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.zomato.com/sydney/" + restaurantURL));
         startActivity(intent);
     }
 
+
+    //Similarly to the searchMenu() method, this method takes the user to a restaurant's photo gallery on Zomato.
     private void searchGallery(String name) {
         String restaurantURL = ((mRestaurant.getName()).replace(" ", "-") + "-" + mRestaurant.getSuburb().replace(" ","-") + "/photos");
 
